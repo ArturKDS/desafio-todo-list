@@ -1,16 +1,18 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, Field
+
+from app.models import StatusTarefa
 
 
 class UsuarioCadastro(BaseModel):
-    email: str
-    senha: str
+    email: EmailStr
+    senha: str = Field(min_length=6)
 
 
 class UsuarioLogin(BaseModel):
-    email: str
+    email: EmailStr
     senha: str
 
 
@@ -28,14 +30,14 @@ class Token(BaseModel):
 
 
 class TarefaCriar(BaseModel):
-    titulo: str
-    descricao: Optional[str] = None
+    titulo: str = Field(min_length=1, max_length=200)
+    descricao: Optional[str] = Field(default=None, max_length=2000)
 
 
 class TarefaAtualizar(BaseModel):
-    titulo: Optional[str] = None
-    descricao: Optional[str] = None
-    status: Optional[str] = None
+    titulo: Optional[str] = Field(default=None, min_length=1, max_length=200)
+    descricao: Optional[str] = Field(default=None, max_length=2000)
+    status: Optional[StatusTarefa] = None
 
 
 class TarefaResposta(BaseModel):
