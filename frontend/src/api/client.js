@@ -23,18 +23,25 @@ export async function apiFetch(path, { method = "GET", body, autenticado = true 
   if (body !== undefined) headers["Content-Type"] = "application/json";
   if (autenticado) headers["Authorization"] = `Bearer ${getToken()}`;
 
-  const resposta = await fetch(`${API_BASE_URL}${path}`, {
-    method,
-    headers,
-    body: body !== undefined ? JSON.stringify(body) : undefined,
-  });
+  let resposta;
+  try {
+    resposta = await fetch(`${API_BASE_URL}${path}`, {
+      method,
+      headers,
+      body: body !== undefined ? JSON.stringify(body) : undefined,
+    });
+  } catch (err) {
+    throw new Error("Não foi possível conectar ao servidor. Tente novamente em instantes.");
+  }
 
   if (resposta.status === 204) return null;
 
   const dados = await resposta.json().catch(() => null);
 
   if (!resposta.ok) {
-    throw new Error(dados?.detail || "Ocorreu um erro inesperado");
+    const erro = new Error(dados?.detail || "Ocorreu um erro inesperado");
+    erro.status = resposta.status;
+    throw erro;
   }
 
   return dados;
