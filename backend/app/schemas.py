@@ -9,6 +9,11 @@ class UsuarioCadastro(BaseModel):
     senha: str
 
 
+class UsuarioLogin(BaseModel):
+    email: str
+    senha: str
+
+
 class UsuarioResposta(BaseModel):
     id: int
     email: str
