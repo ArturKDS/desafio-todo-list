@@ -19,8 +19,12 @@ export default function TasksPage() {
       const dados = await listarTarefas();
       setTarefas(dados);
     } catch (err) {
-      sessaoExpirou();
-      navigate("/login", { state: { erro: "Sessão expirada. Faça login novamente." } });
+      if (err.status === 401) {
+        sessaoExpirou();
+        navigate("/login", { state: { erro: "Sessão expirada. Faça login novamente." } });
+        return;
+      }
+      setErro(err.message);
     }
   }, [navigate, sessaoExpirou]);
 
