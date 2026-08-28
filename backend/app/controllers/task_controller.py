@@ -14,11 +14,6 @@ router = APIRouter(
 
 
 def buscar_tarefa_do_usuario(db: Session, task_id: int, user_id: int) -> Task:
-    """Busca a tarefa garantindo que ela é do usuário logado (senão, 404).
-
-    Devolvemos 404 (nunca 403) para tarefa de outro dono, para não confirmar
-    para quem não é dono que aquele id existe.
-    """
     tarefa = db.query(Task).filter(Task.id == task_id, Task.user_id == user_id).first()
     if not tarefa:
         raise HTTPException(status_code=404, detail="Tarefa não encontrada")
