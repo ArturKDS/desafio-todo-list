@@ -1,0 +1,15 @@
+.task-form {
+  flex-direction: row;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.task-form input {
+  flex: 1;
+  min-width: 140px;
+}
+
+.task-form button {
+  margin-top: 0;
+  flex-shrink: 0;
+}

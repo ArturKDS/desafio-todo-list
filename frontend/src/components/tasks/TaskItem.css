@@ -1,0 +1,81 @@
+.task-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.task-main {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.task-check {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.task-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.task-titulo {
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.task-descricao {
+  font-size: 13px;
+  color: var(--text-muted);
+  word-break: break-word;
+}
+
+.task-date {
+  font-size: 11px;
+  color: #a0a3ad;
+}
+
+.task-item.concluida .task-titulo {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.task-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.task-actions button {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 4px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+}
+
+.task-actions .delete-btn {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.task-actions button:hover {
+  background: #f0f0f2;
+}
+
+.task-actions .delete-btn:hover {
+  background: #fef2f2;
+}

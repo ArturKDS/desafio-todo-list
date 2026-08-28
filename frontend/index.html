@@ -1,94 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To-Do List</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-  <div id="app">
-
-    <section id="login-screen" class="auth-screen">
-      <div class="card">
-        <h1>Entrar</h1>
-        <form id="login-form">
-          <label for="login-email">E-mail</label>
-          <input type="email" id="login-email" required autocomplete="email" />
-
-          <label for="login-password">Senha</label>
-          <input type="password" id="login-password" required autocomplete="current-password" />
-
-          <button type="submit">Entrar</button>
-        </form>
-        <p class="error" id="login-error"></p>
-        <p class="switch">Não tem conta? <a href="#" id="go-to-register">Cadastre-se</a></p>
-      </div>
-    </section>
-
-    <section id="register-screen" class="auth-screen hidden">
-      <div class="card">
-        <h1>Criar conta</h1>
-        <form id="register-form">
-          <label for="register-email">E-mail</label>
-          <input type="email" id="register-email" required autocomplete="email" />
-
-          <label for="register-password">Senha</label>
-          <input type="password" id="register-password" required minlength="6" autocomplete="new-password" />
-
-          <button type="submit">Cadastrar</button>
-        </form>
-        <p class="error" id="register-error"></p>
-        <p class="success" id="register-success"></p>
-        <p class="switch">Já tem conta? <a href="#" id="go-to-login">Entrar</a></p>
-      </div>
-    </section>
-
-    <section id="tasks-screen" class="hidden">
-      <header class="topbar">
-        <h1>Minhas Tarefas</h1>
-        <div class="topbar-right">
-          <span id="user-email"></span>
-          <button id="logout-btn" class="secondary">Sair</button>
-        </div>
-      </header>
-
-      <main class="container">
-        <form id="task-form" class="task-form">
-          <input type="text" id="task-titulo" placeholder="Título da tarefa" required maxlength="120" />
-          <input type="text" id="task-descricao" placeholder="Descrição (opcional)" maxlength="500" />
-          <button type="submit">Adicionar</button>
-        </form>
-
-        <p class="error" id="tasks-error"></p>
-        <p id="empty-msg" class="empty hidden">Nenhuma tarefa ainda. Adicione a primeira acima!</p>
-
-        <ul id="task-list"></ul>
-      </main>
-    </section>
-
-  </div>
-
-  <template id="task-item-template">
-    <li class="task-item">
-      <div class="task-main">
-        <input type="checkbox" class="task-check" />
-        <div class="task-text">
-          <span class="task-titulo"></span>
-          <span class="task-descricao"></span>
-          <span class="task-date"></span>
-        </div>
-      </div>
-      <div class="task-actions">
-        <button class="edit-btn">Editar</button>
-        <button class="delete-btn">Excluir</button>
-      </div>
-    </li>
-  </template>
-
-  <script src="config.js"></script>
-  <script src="api.js"></script>
-  <script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
