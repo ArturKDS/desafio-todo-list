@@ -12,7 +12,6 @@ Base = declarative_base()
 
 
 def get_db():
-    """Abre uma conexão com o banco pra rota usar, e fecha no final."""
     db = SessionLocal()
     try:
         yield db

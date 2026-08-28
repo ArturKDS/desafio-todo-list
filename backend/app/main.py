@@ -5,7 +5,6 @@ from app.config import settings
 from app.controllers import auth_controller, task_controller
 from app.database import Base, engine
 
-# Garante que as tabelas existam (cria a partir dos modelos em app.models)
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="To-Do List API")

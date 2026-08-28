@@ -18,11 +18,6 @@ export function getEmailSalvo() {
   return localStorage.getItem("userEmail") || "";
 }
 
-/**
- * Wrapper em cima do fetch: monta a URL, injeta o token (quando existir)
- * e converte respostas de erro no formato {detail: "..."} da API em
- * uma exceção com mensagem amigável.
- */
 export async function apiFetch(path, { method = "GET", body, autenticado = true } = {}) {
   const headers = {};
   if (body !== undefined) headers["Content-Type"] = "application/json";

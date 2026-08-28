@@ -9,7 +9,7 @@ from app.schemas import TarefaAtualizar, TarefaCriar, TarefaResposta
 router = APIRouter(
     prefix="/tasks",
     tags=["tasks"],
-    dependencies=[Depends(get_current_user)],  # protege todas as rotas de uma vez
+    dependencies=[Depends(get_current_user)],  
 )
 
 
@@ -57,10 +57,6 @@ def atualizar_tarefa(
 ):
     tarefa = buscar_tarefa_do_usuario(db, task_id, usuario.id)
 
-    # exclude_unset=True: corrige um bug do projeto original, em que era
-    # impossível limpar a descrição de uma tarefa. Com
-    # `if dados.descricao is not None`, um `null` explícito no JSON e um
-    # campo simplesmente ausente eram tratados da mesma forma.
     for campo, valor in dados.model_dump(exclude_unset=True).items():
         setattr(tarefa, campo, valor)
 

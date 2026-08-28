@@ -6,10 +6,6 @@ from app.database import get_db
 from app.models import User
 from app.security import decodificar_token
 
-# HTTPBearer em vez de OAuth2PasswordBearer: o /auth/login deste projeto
-# recebe JSON (não form-urlencoded), e o esquema OAuth2 clássico deixava o
-# botão "Authorize" do Swagger (/docs) quebrado, pois declarava um formato
-# de corpo diferente do que a rota realmente aceita.
 security = HTTPBearer()
 
 

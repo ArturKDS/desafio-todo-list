@@ -40,9 +40,6 @@ class Task(Base):
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
 
-    # index=True: toda listagem de tarefas filtra por user_id - sem índice
-    # isso vira um full table scan conforme a tabela cresce.
-    # ondelete="CASCADE": evita tarefas órfãs se um usuário for apagado.
     user_id: Mapped[int] = mapped_column(
         Integer,
         ForeignKey("users.id", ondelete="CASCADE"),

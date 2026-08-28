@@ -21,12 +21,7 @@ def cadastrar(dados: UsuarioCadastro, db: Session = Depends(get_db)):
     try:
         db.commit()
     except IntegrityError:
-        # Correção de segurança: o SELECT acima não é atômico com o INSERT.
-        # Dois cadastros simultâneos com o mesmo e-mail passam pelo SELECT
-        # antes de qualquer um commitar; o segundo estoura na constraint
-        # UNIQUE do banco. Sem esse except, isso virava um 500 em vez de um
-        # 400 (a constraint do banco é a garantia real; o SELECT acima é só
-        # para dar uma mensagem amigável no caso comum).
+     
         db.rollback()
         raise HTTPException(status_code=400, detail="Esse e-mail já está cadastrado") from None
 
