@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+*.egg-info/
+
+# Banco de dados local
+backend/todo.db
+
+# Variáveis de ambiente 
+.env
+
+# Editores/SO
+.vscode/
+.idea/
+.DS_Store

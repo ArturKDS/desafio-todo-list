@@ -1,0 +1,275 @@
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --bg: #f4f5f7;
+  --card-bg: #ffffff;
+  --text: #1f2330;
+  --text-muted: #6b7280;
+  --border: #e2e4e9;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 32px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input:focus {
+  border-color: var(--primary);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--primary);
+  color: white;
+  transition: background 0.15s;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font-weight: 500;
+}
+
+button.secondary:hover {
+  background: #f0f0f2;
+}
+
+form button {
+  margin-top: 16px;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 13px;
+  min-height: 18px;
+  margin: 10px 0 0;
+}
+
+.success {
+  color: var(--success);
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+.switch {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 18px;
+}
+
+.switch a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.topbar {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+.task-form {
+  flex-direction: row;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.task-form input {
+  flex: 1;
+  min-width: 140px;
+}
+
+.task-form button {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.empty {
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.task-main {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.task-check {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.task-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.task-titulo {
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.task-descricao {
+  font-size: 13px;
+  color: var(--text-muted);
+  word-break: break-word;
+}
+
+.task-date {
+  font-size: 11px;
+  color: #a0a3ad;
+}
+
+.task-item.concluida .task-titulo {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.task-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.task-actions button {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 4px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+}
+
+.task-actions .delete-btn {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.task-actions button:hover {
+  background: #f0f0f2;
+}
+
+.task-actions .delete-btn:hover {
+  background: #fef2f2;
+}
