@@ -13,7 +13,6 @@ def get_current_user(
     credenciais: HTTPAuthorizationCredentials = Depends(security),
     db: Session = Depends(get_db),
 ) -> User:
-    """Lê o token enviado pelo frontend e descobre qual usuário está logado."""
     erro_login = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Não foi possível validar o login. Faça login novamente.",
