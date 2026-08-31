@@ -24,15 +24,7 @@ def criar_token(usuario_id: int) -> str:
 
 
 def decodificar_token(token: str) -> int:
-    """Decodifica o token e devolve o id do usuário.
 
-    Correção de segurança importante: no código original, `int(usuario_id)`
-    ficava FORA do try/except do jwt.decode. Um token adulterado sem o campo
-    "sub" (ou com "sub" não numérico) fazia `int(None)` ou `int("abc")`
-    lançar TypeError/ValueError, que não era capturado - a API respondia 500
-    com stacktrace em vez de 401. Aqui capturamos tudo que pode falhar nessa
-    conversão, então qualquer token inválido vira 401 corretamente.
-    """
     try:
         payload = jwt.decode(token, settings.secret_key, algorithms=[settings.algorithm])
         return int(payload["sub"])
